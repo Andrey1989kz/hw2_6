@@ -1,41 +1,54 @@
 import java.util.*;
 
 public class Main {
-    private static final List<Integer> nums = new ArrayList<>(List.of(1, 1, 2, 3, 4, 4, 5, 5, 6, 7));
-    private static final List<String> word = new ArrayList<>(List.of("лес", "лог", "лес", "поле", "гол"));
+    public static final List<Integer> nums = new ArrayList<>(List.of(1, 1, 2, 3, 4, 4, 5, 5, 6, 7));
+    public static final List<String> word = new ArrayList<>(List.of("лес", "лог", "лес", "поле", "лог"));
 
     public static void main(String[] args) {
         firstTask();
+        fourthTask(word);
         secondTask();
-        thirdTask();
-        fourthTask();
+        thirdTask(word);
     }
 
-    public static void firstTask() {
-        for (int x : nums) {
+    public static Integer firstTask() {
+        Set<Integer> num = new HashSet<>(nums);
+        for (Integer x : num) {
             if (x % 2 != 0) {
-                System.out.println(x);
+                System.out.print(x);
             }
         }
+        System.out.println();
+        return null;
     }
 
-    public static void secondTask() {
+
+    public static Integer secondTask() {
+        Set<Integer> num = new HashSet<>(nums);
         Collections.sort(nums);
-        int unicum = Integer.MIN_VALUE;
-        for (int x : nums) {
-            if (x % 2 == 0 && x != unicum) {
-                System.out.println(x);
+        for (int x : num) {
+            if (x % 2 == 0) {
+                System.out.print(x);
             }
         }
-    }
-    public static void thirdTask() {
-        Set<String> unicum = new HashSet<>(word);
-        System.out.println(unicum);
+        System.out.println();
+        return null;
     }
 
-    public static void fourthTask() {
-        Set<String> unicum = new HashSet<>(word);
-        System.out.println(word.size() - unicum.size());
+    public static String thirdTask(List<String> word) {
+        HashSet<String> words = new HashSet<>();
+        words.addAll(Main.word);
+        Main.word.clear();
+        Main.word.addAll(words);
+        System.out.println(words);
+        return null;
+    }
+
+
+    public static String fourthTask(List<String> word) {
+        Set<String> unique = new HashSet<>(Main.word);
+        System.out.println(Main.word.size() - unique.size());
+        return null;
     }
 }
 
